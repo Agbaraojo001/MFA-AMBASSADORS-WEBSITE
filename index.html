@@ -13,7 +13,13 @@
           <img src="images/MFA AMb Logo.jpeg" alt="MFA Logo" class="logo" />
           <a class="brand" href="#top">MFA Ambassadors</a>
         </div>
-        <nav class="nav">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="mainNav" type="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="mainNav" class="nav" aria-label="Primary navigation">
           <a href="#top">Home</a>
           <a href="#about">About Us</a>
           <a href="#history">History</a>
@@ -23,7 +29,6 @@
         </nav>
       </div>
     </header>
-
     <section id="top" class="hero">
       <div class="container hero-content">
         <p class="eyebrow">Ward E · Ibeju-Lekki Constituency I · Lagos State</p>
@@ -307,7 +312,6 @@
               <textarea name="message" rows="5" placeholder="Your message" required></textarea>
             </label>
             <button type="submit" class="button primary">Send Message</button>
-            <div id="statusMessage" class="form-status" aria-live="polite"></div>
           </form>
         </div>
       </section>
@@ -368,7 +372,6 @@
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
   </body>
 </html>

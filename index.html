@@ -307,6 +307,7 @@
               <textarea name="message" rows="5" placeholder="Your message" required></textarea>
             </label>
             <button type="submit" class="button primary">Send Message</button>
+            <div id="statusMessage" class="form-status" aria-live="polite"></div>
           </form>
         </div>
       </section>
@@ -367,6 +368,7 @@
       </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
   </body>
 </html>

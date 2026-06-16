@@ -80,6 +80,20 @@ if (navToggle && mainNav) {
   el.textContent = 'MFA Ambassadors — ' + greeting;
 })();
 
+// ── History timeline "Read more" toggle ──
+document.querySelectorAll('.history-section .timeline-item').forEach((item) => {
+  const p = item.querySelector('p');
+  if (!p) return;
+  const btn = document.createElement('button');
+  btn.className = 'timeline-readmore';
+  btn.textContent = 'Read more';
+  p.after(btn);
+  btn.addEventListener('click', () => {
+    const expanded = item.classList.toggle('expanded');
+    btn.textContent = expanded ? 'Show less' : 'Read more';
+  });
+});
+
 // ── Contact form ──
 const form = document.getElementById('contactForm');
 

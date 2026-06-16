@@ -1052,7 +1052,11 @@ select:focus {
 }
 
 .footer-top {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
   margin-bottom: 48px;
   padding-bottom: 40px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -1154,6 +1158,502 @@ select:focus {
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.84rem;
 }
+
+/* ── Leadership Portrait Cards ── */
+.leader-portrait-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.leader-portrait-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 102, 51, 0.08);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.leader-portrait-card:hover {
+  box-shadow: 0 12px 32px rgba(0, 102, 51, 0.16);
+  transform: translateY(-4px);
+}
+
+.leader-portrait-photo-wrap {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.leader-portrait-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.leader-portrait-initials {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--primary);
+  opacity: 0.5;
+  user-select: none;
+}
+
+.leader-portrait-info {
+  padding: 14px 18px 18px;
+  border-top: 3px solid var(--primary);
+}
+
+.leader-portrait-role {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+  margin: 0 0 5px;
+}
+
+.leader-portrait-name {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.leader-tier-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  padding: 5px 14px;
+  background: var(--primary-light);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 4px 4px 0;
+  display: inline-block;
+  margin: 36px 0 20px;
+}
+
+/* ── News Cards ── */
+.news-section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.news-section-header h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--primary-dark);
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+
+.news-section-header p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.news-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 102, 51, 0.05);
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+}
+
+.news-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 102, 51, 0.13);
+  transform: translateY(-3px);
+}
+
+.news-card-image-wrap {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.news-card-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.news-img-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--primary);
+  opacity: 0.4;
+}
+
+.news-img-placeholder svg {
+  width: 36px;
+  height: 36px;
+  fill: currentColor;
+}
+
+.news-img-placeholder span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.news-card-body {
+  padding: 16px 18px 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-card-date {
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.news-card-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.45;
+  flex: 1;
+  padding-bottom: 14px;
+}
+
+.news-card:hover .news-card-title {
+  color: var(--primary);
+}
+
+.news-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+.news-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 3px;
+  background: var(--primary);
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.news-badge.accent   { background: var(--accent); }
+.news-badge.blue     { background: #0077b6; }
+.news-badge.green    { background: #2d6a4f; }
+.news-badge.purple   { background: #7b2d8b; }
+.news-badge.orange   { background: #e76f51; }
+
+.news-read-time {
+  font-size: 0.7rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.news-section-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* ── Newsroom Page ── */
+.newsroom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.newsroom-featured .news-card-image-wrap {
+  aspect-ratio: 21/9;
+}
+
+.newsroom-featured .news-card-title {
+  font-size: 1.1rem;
+}
+
+.newsroom-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 48px;
+  flex-wrap: wrap;
+}
+
+.newsroom-pagination a,
+.newsroom-pagination span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  transition: background 0.2s, color 0.2s;
+}
+
+.newsroom-pagination a:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.newsroom-pagination span.active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+/* ── Footer Greeting ── */
+.footer-greeting {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.footer-greeting .greeting-part {
+  color: var(--accent);
+}
+
+/* ── Stats Bar ── */
+.stats-bar {
+  background: var(--primary-dark);
+  padding: 0;
+  border-top: 3px solid var(--accent);
+  border-bottom: 3px solid var(--accent);
+}
+
+.stats-bar-inner {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.stats-bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 40px;
+  position: relative;
+  flex: 1;
+  min-width: 140px;
+}
+
+.stats-bar-item + .stats-bar-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.stats-bar-number {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.stats-bar-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 6px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* ── Leader Principal Featured Card ── */
+.leader-principal-card {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #003319 100%);
+  border: 2px solid var(--accent);
+  border-radius: 16px;
+  padding: 36px 40px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin: 32px 0 8px;
+  color: #ffffff;
+  flex-wrap: wrap;
+}
+
+.leader-principal-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: rgba(200, 150, 12, 0.15);
+  border: 3px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.leader-principal-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.leader-principal-info {
+  flex: 1;
+}
+
+.leader-principal-info .lp-role {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.leader-principal-info .lp-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 6px;
+}
+
+.leader-principal-info .lp-desc {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.leader-principal-badge {
+  background: var(--accent);
+  color: var(--primary-dark);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 7px 16px;
+  border-radius: 4px;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+/* ── Project Status Cards ── */
+.projects-grid {
+  display: grid;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: start;
+}
+
+.project-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.project-status-dot.done { background: #2ecc71; }
+.project-status-dot.progress { background: var(--accent); }
+.project-status-dot.planned { background: #3498db; }
+.project-status-dot.flagged { background: #e74c3c; }
+
+.project-card h4 {
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin: 0 0 4px;
+}
+
+.project-card p {
+  font-size: 0.86rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.project-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.project-badge.done { background: #eafaf1; color: #1a8a4a; }
+.project-badge.progress { background: #fef9e7; color: #a67800; }
+.project-badge.planned { background: #eaf2fb; color: #1a5276; }
+.project-badge.flagged { background: #fdecea; color: #c0392b; }
 
 /* ── Responsive ── */
 @media (max-width: 940px) {

@@ -128,7 +128,7 @@
             </form>
 
             <!-- Success state (shown after send) -->
-            <div id="contactSuccess" class="contact-success" hidden>
+            <div id="contactSuccess" class="contact-success" style="display:none;">
               <div class="contact-success-icon">&#10003;</div>
               <h3>Message Sent!</h3>
               <p>Thank you for reaching out. The MFA Ambassadors Media Team will get back to you shortly on <strong id="successPhone"></strong>.</p>
@@ -226,17 +226,17 @@
             }).catch(function () { /* silent */ });
           }
 
+          form.reset();
           successPhone.textContent = phone;
-          form.hidden       = true;
-          successDiv.hidden = false;
+          form.style.display       = 'none';
+          successDiv.style.display = 'block';
         });
 
         window.resetContact = function () {
-          form.reset();
-          submitBtn.disabled    = false;
-          submitBtn.textContent = 'Send Message';
-          form.hidden       = false;
-          successDiv.hidden = true;
+          submitBtn.disabled       = false;
+          submitBtn.textContent    = 'Send Message';
+          form.style.display       = '';
+          successDiv.style.display = 'none';
         };
       })();
     </script>

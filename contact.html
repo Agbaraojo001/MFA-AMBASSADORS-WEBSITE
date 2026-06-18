@@ -189,12 +189,13 @@
     <script src="script.js"></script>
     <script>
       (function () {
-        // ── Paste your Google Apps Script Web App URL here (same URL as join.html) ──
-        var SCRIPT_URL = 'YOUR_SCRIPT_URL_HERE';
+        // ── Deploy contact-backend.js as a separate Google Apps Script Web App ──
+        // ── then paste that URL here (DIFFERENT from join.html's SCRIPT_URL)   ──
+        var CONTACT_SCRIPT_URL = 'YOUR_CONTACT_SCRIPT_URL_HERE';
 
-        var form        = document.getElementById('contactForm');
-        var submitBtn   = document.getElementById('contactSubmit');
-        var successDiv  = document.getElementById('contactSuccess');
+        var form         = document.getElementById('contactForm');
+        var submitBtn    = document.getElementById('contactSubmit');
+        var successDiv   = document.getElementById('contactSuccess');
         var successPhone = document.getElementById('successPhone');
 
         form.addEventListener('submit', function (e) {
@@ -214,10 +215,10 @@
           submitBtn.disabled    = true;
           submitBtn.textContent = 'Sending…';
 
-          var payload = { type: 'contact', name: name, phone: phone, community: community, subject: subject, message: message };
+          var payload = { name: name, phone: phone, community: community, subject: subject, message: message };
 
-          if (SCRIPT_URL && SCRIPT_URL !== 'YOUR_SCRIPT_URL_HERE') {
-            fetch(SCRIPT_URL, {
+          if (CONTACT_SCRIPT_URL && CONTACT_SCRIPT_URL !== 'YOUR_CONTACT_SCRIPT_URL_HERE') {
+            fetch(CONTACT_SCRIPT_URL, {
               method:  'POST',
               mode:    'no-cors',
               headers: { 'Content-Type': 'text/plain' },
@@ -226,7 +227,7 @@
           }
 
           successPhone.textContent = phone;
-          form.hidden    = true;
+          form.hidden       = true;
           successDiv.hidden = false;
         });
 
@@ -234,7 +235,7 @@
           form.reset();
           submitBtn.disabled    = false;
           submitBtn.textContent = 'Send Message';
-          form.hidden    = false;
+          form.hidden       = false;
           successDiv.hidden = true;
         };
       })();

@@ -242,6 +242,7 @@ main {
 /* ── Hero (home) ── */
 .hero {
   padding: 96px 0 80px;
+  min-height: 520px;
   background: #081f56;
   position: relative;
   overflow: hidden;
@@ -259,7 +260,7 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 20%;
   opacity: 0;
   animation: hero-slide-fade 24s infinite;
   will-change: opacity;

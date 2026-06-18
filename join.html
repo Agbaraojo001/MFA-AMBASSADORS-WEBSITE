@@ -294,7 +294,7 @@
 
         function showSlip(payload) {
           document.getElementById('slipFirstName').textContent = payload.surname.toUpperCase();
-          document.getElementById('slipFullName').textContent  = payload.otherNames + ' ' + payload.surname;
+          document.getElementById('slipFullName').textContent  = payload.otherNames;
           document.getElementById('slipCode').textContent      = payload.code;
           document.getElementById('slipCodeRepeat').textContent = payload.code;
           document.getElementById('slipWard').textContent      = payload.ward.toUpperCase();

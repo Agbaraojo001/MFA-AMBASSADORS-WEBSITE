@@ -241,10 +241,48 @@ main {
 
 /* ── Hero (home) ── */
 .hero {
-  padding: 72px 0 56px;
-  background: linear-gradient(135deg, #081f56 0%, var(--primary) 55%, #2a6fd4 100%);
+  padding: 96px 0 80px;
+  background: #081f56;
   position: relative;
   overflow: hidden;
+}
+
+.hero-slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0;
+  animation: hero-slide-fade 24s infinite;
+  will-change: opacity;
+}
+
+.hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-slide:nth-child(2) { animation-delay: -6s; }
+.hero-slide:nth-child(3) { animation-delay: -12s; }
+.hero-slide:nth-child(4) { animation-delay: -18s; }
+
+@keyframes hero-slide-fade {
+  0%   { opacity: 1; }
+  22%  { opacity: 1; }
+  28%  { opacity: 0; }
+  97%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(8, 31, 86, 0.80) 0%, rgba(24, 82, 168, 0.68) 55%, rgba(42, 111, 212, 0.62) 100%);
+  z-index: 1;
 }
 
 .hero::before {
@@ -253,6 +291,7 @@ main {
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   pointer-events: none;
+  z-index: 2;
 }
 
 .hero-content {
@@ -260,7 +299,7 @@ main {
   gap: 24px;
   max-width: 760px;
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
 /* ── Page Hero (sub-pages) ── */
@@ -2211,6 +2250,88 @@ select:focus {
   line-height: 1.75;
   max-width: 38ch;
   margin: 0;
+}
+
+/* ── Symposium Article ── */
+.symposium-hero-image {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 16/7;
+  margin-bottom: 36px;
+}
+
+.symposium-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.symposium-article {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.symposium-article-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.symposium-article-title {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--primary-dark);
+  line-height: 1.2;
+  margin: 0 0 24px;
+}
+
+.symposium-body {
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.85;
+  margin-bottom: 28px;
+}
+
+.symposium-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 28px 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.symposium-gallery-item {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.symposium-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.symposium-gallery-item:hover img {
+  transform: scale(1.04);
+}
+
+@media (max-width: 600px) {
+  .symposium-gallery {
+    grid-template-columns: 1fr;
+  }
+  .symposium-hero-image {
+    aspect-ratio: 4/3;
+  }
 }
 
 /* ── Print ── */

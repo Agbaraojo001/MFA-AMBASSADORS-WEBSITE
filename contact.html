@@ -84,18 +84,20 @@
 
           <div class="contact-form-wrapper">
             <p class="section-label" style="margin-bottom:20px;">Send a Message</p>
+
+            <!-- Form -->
             <form id="contactForm" class="form-card" style="border:none;padding:0;box-shadow:none;background:transparent;">
               <label>
-                Full Name
-                <input type="text" name="name" placeholder="Your full name" required />
+                Full Name <span style="color:#cc2222">*</span>
+                <input type="text" name="name" id="contactName" placeholder="Your full name" required />
               </label>
               <label>
-                Phone / WhatsApp Number
-                <input type="tel" name="phone" placeholder="Your phone number" required />
+                Phone / WhatsApp Number <span style="color:#cc2222">*</span>
+                <input type="tel" name="phone" id="contactPhone" placeholder="Your phone number" required />
               </label>
               <label>
-                Your Town / Community
-                <select name="community" required>
+                Your Town / Community <span style="color:#cc2222">*</span>
+                <select name="community" id="contactCommunity" required>
                   <option value="">Select your community</option>
                   <option value="Abijo">Abijo</option>
                   <option value="Owode Labora">Owode Labora</option>
@@ -115,15 +117,23 @@
                 </select>
               </label>
               <label>
-                Subject
-                <input type="text" name="subject" placeholder="Subject of your message" required />
+                Subject <span style="color:#cc2222">*</span>
+                <input type="text" name="subject" id="contactSubject" placeholder="Subject of your message" required />
               </label>
               <label>
-                Message
-                <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+                Message <span style="color:#cc2222">*</span>
+                <textarea name="message" id="contactMessage" rows="5" placeholder="Your message" required></textarea>
               </label>
-              <button type="submit" class="button primary" style="width:100%;margin-top:4px;">Send Message</button>
+              <button type="submit" id="contactSubmit" class="button primary" style="width:100%;margin-top:4px;">Send Message</button>
             </form>
+
+            <!-- Success state (shown after send) -->
+            <div id="contactSuccess" class="contact-success" hidden>
+              <div class="contact-success-icon">&#10003;</div>
+              <h3>Message Sent!</h3>
+              <p>Thank you for reaching out. The MFA Ambassadors Media Team will get back to you shortly on <strong id="successPhone"></strong>.</p>
+              <button onclick="resetContact()" class="button button-outline" style="margin-top:8px;">Send Another Message</button>
+            </div>
           </div>
         </div>
       </section>
@@ -177,5 +187,57 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+      (function () {
+        // ── Paste your Google Apps Script Web App URL here (same URL as join.html) ──
+        var SCRIPT_URL = 'YOUR_SCRIPT_URL_HERE';
+
+        var form        = document.getElementById('contactForm');
+        var submitBtn   = document.getElementById('contactSubmit');
+        var successDiv  = document.getElementById('contactSuccess');
+        var successPhone = document.getElementById('successPhone');
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          var name      = document.getElementById('contactName').value.trim();
+          var phone     = document.getElementById('contactPhone').value.trim();
+          var community = document.getElementById('contactCommunity').value;
+          var subject   = document.getElementById('contactSubject').value.trim();
+          var message   = document.getElementById('contactMessage').value.trim();
+
+          if (!name || !phone || !community || !subject || !message) {
+            alert('Please fill in all fields before sending.');
+            return;
+          }
+
+          submitBtn.disabled    = true;
+          submitBtn.textContent = 'Sending…';
+
+          var payload = { type: 'contact', name: name, phone: phone, community: community, subject: subject, message: message };
+
+          if (SCRIPT_URL && SCRIPT_URL !== 'YOUR_SCRIPT_URL_HERE') {
+            fetch(SCRIPT_URL, {
+              method:  'POST',
+              mode:    'no-cors',
+              headers: { 'Content-Type': 'text/plain' },
+              body:    JSON.stringify(payload)
+            }).catch(function () { /* silent */ });
+          }
+
+          successPhone.textContent = phone;
+          form.hidden    = true;
+          successDiv.hidden = false;
+        });
+
+        window.resetContact = function () {
+          form.reset();
+          submitBtn.disabled    = false;
+          submitBtn.textContent = 'Send Message';
+          form.hidden    = false;
+          successDiv.hidden = true;
+        };
+      })();
+    </script>
   </body>
 </html>

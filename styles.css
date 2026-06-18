@@ -1800,6 +1800,12 @@ select:focus {
   overflow: visible;
 }
 
+/* ── Leadership centered pair (Supreme Leader + General Coordinator) ── */
+.leader-portrait-centered {
+  grid-template-columns: repeat(2, 260px) !important;
+  justify-content: center;
+}
+
 /* ── Leadership 4-column grid ── */
 .leader-portrait-grid-4 {
   grid-template-columns: repeat(4, 1fr) !important;

@@ -129,10 +129,11 @@
 
             <!-- Success state (shown after send) -->
             <div id="contactSuccess" class="contact-success" style="display:none;">
+              <img src="images/MFA AMb Logo.jpeg" alt="MFA Ambassadors Logo" class="contact-success-logo" />
               <div class="contact-success-icon">&#10003;</div>
               <h3>Message Sent!</h3>
               <p>Thank you for reaching out. The MFA Ambassadors Media Team will get back to you shortly on <strong id="successPhone"></strong>.</p>
-              <button onclick="resetContact()" class="button button-outline" style="margin-top:8px;">Send Another Message</button>
+              <button onclick="resetContact()" class="button button-outline">Send Another Message</button>
             </div>
           </div>
         </div>
@@ -229,7 +230,7 @@
           form.reset();
           successPhone.textContent = phone;
           form.style.display       = 'none';
-          successDiv.style.display = 'block';
+          successDiv.style.display = 'flex';
         });
 
         window.resetContact = function () {

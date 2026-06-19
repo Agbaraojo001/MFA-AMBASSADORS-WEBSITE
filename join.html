@@ -287,9 +287,9 @@
         var printBtn    = document.getElementById('printBtn');
 
         function generateCode() {
-          var count = parseInt(localStorage.getItem('mfa_amb_count') || '0', 10) + 1;
-          localStorage.setItem('mfa_amb_count', String(count));
-          return 'AMB-2026-' + String(count).padStart(5, '0');
+          var ts   = Date.now().toString().slice(-7);        // last 7 digits of ms timestamp
+          var rand = Math.floor(Math.random() * 900 + 100); // 3-digit random (100–999)
+          return 'AMB-2026-' + ts + rand;                   // 10-digit unique code
         }
 
         function showSlip(payload) {

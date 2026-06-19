@@ -35,7 +35,7 @@ function doPost(e) {
 
     if (sheet.getLastRow() === 0) {
       var headers = [
-        'Timestamp (Lagos)', 'Reg Code', 'Surname', 'Other Names', 'Full Name',
+        'Timestamp (Lagos)', 'Membership ID', 'Surname', 'Other Names', 'Full Name',
         'WhatsApp', 'Ward', 'Area of Residence', 'VIN No.', 'Occupation', 'Address'
       ];
       sheet.appendRow(headers);

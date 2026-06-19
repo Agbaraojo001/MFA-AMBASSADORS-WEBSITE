@@ -191,10 +191,10 @@
                 <p class="reg-slip-dear">DEAR <span id="slipFirstName"></span>,</p>
                 <p class="reg-slip-fullname" id="slipFullName"></p>
                 <div class="reg-slip-code-box">
-                  <p class="reg-slip-code-label">Your Registration Code</p>
+                  <p class="reg-slip-code-label">Your Membership ID</p>
                   <p class="reg-slip-code" id="slipCode"></p>
                 </div>
-                <p class="reg-slip-footer-note">Your Reg. Code is: <strong id="slipCodeRepeat"></strong></p>
+                <p class="reg-slip-footer-note">Your Membership ID is: <strong id="slipCodeRepeat"></strong></p>
               </div>
 
               <!-- Slip Footer Bar -->
@@ -287,9 +287,9 @@
         var printBtn    = document.getElementById('printBtn');
 
         function generateCode() {
-          var ts   = Date.now().toString().slice(-7);        // last 7 digits of ms timestamp
+          var ts   = Date.now().toString().slice(-8);        // last 8 digits of ms timestamp
           var rand = Math.floor(Math.random() * 900 + 100); // 3-digit random (100–999)
-          return 'AMB-2026-' + ts + rand;                   // 10-digit unique code
+          return 'MFA-AMB' + ts + rand;                     // e.g. MFA-AMB56078432910
         }
 
         function showSlip(payload) {

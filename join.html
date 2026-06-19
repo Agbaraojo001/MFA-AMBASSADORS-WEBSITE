@@ -147,7 +147,8 @@
                     </div>
                     <label>
                       WhatsApp Number <span style="color:#c0392b">*</span>
-                      <input type="tel" name="whatsapp" id="whatsapp" placeholder="e.g. 08012345678" required />
+                      <input type="tel" name="whatsapp" id="whatsapp" placeholder="e.g. 07062607886 or +2347062607886" required />
+                      <small id="whatsappError" style="color:#cc2222;display:none;margin-top:4px;font-size:0.82rem;">Enter an 11-digit Nigerian number (07062607886) or international format (+2347062607886)</small>
                     </label>
                     <label>
                       Address <span style="color:#c0392b">*</span>
@@ -331,6 +332,18 @@
             alert('Please fill in all required fields.');
             return;
           }
+
+          // Phone validation: 11-digit Nigerian (07062607886) OR international (+234... / +1... etc.)
+          var phoneClean = whatsapp.replace(/[\s\-().]/g, '');
+          var phoneValid = /^0\d{10}$/.test(phoneClean) ||   // 11 digits, starts with 0
+                           /^\+\d{7,15}$/.test(phoneClean);  // + then 7–15 digits (global ITU)
+          var phoneErr = document.getElementById('whatsappError');
+          if (!phoneValid) {
+            phoneErr.style.display = 'block';
+            document.getElementById('whatsapp').focus();
+            return;
+          }
+          phoneErr.style.display = 'none';
 
           // Disable button and show loading
           submitBtn.disabled    = true;
